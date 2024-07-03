@@ -30,8 +30,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 "categoriesCount"=> Category::count()
             ];
             ReportMailJob::dispatch("m.erenyilmaz2007@gmail.com", $infos);
-        })->everyFiveSeconds();
-        $schedule->command("queue:work-daily")->everyTwoMinutes();
+        })->daily();
+        $schedule->command("queue:work-daily")->daily();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
